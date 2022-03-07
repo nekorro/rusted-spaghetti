@@ -10,7 +10,7 @@ COPY entrypoint.sh /entrypoint.sh
 ARG DEBIAN_FRONTEND=noninteractive
 RUN set -ex\
     && apt update -y \
-    && apt install -y wget qrencode nginx-light jq \
+    && apt install -y wget xz-utils qrencode nginx-light jq \
     && apt clean -y \
     && chmod +x /entrypoint.sh \
     && mkdir -p /etc/shadowsocks /ssbin /v2raybin /wwwroot \
