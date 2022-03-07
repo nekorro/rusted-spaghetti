@@ -14,7 +14,7 @@ RUN set -ex\
     && apt clean -y \
     && chmod +x /entrypoint.sh \
     && mkdir -p /etc/shadowsocks /ssbin /v2raybin /wwwroot \
-    && wget -O- "https://github.com/shadowsocks/v2ray-plugin/releases/download/${SSRUST_VERSION}/shadowsocks-${SSRUST_VERSION}.x86_64-unknown-linux-musl.tar.gz" | \
+    && wget -O- "https://github.com/shadowsocks/shadowsocks-rust/releases/download/${SSRUST_VERSION}/shadowsocks-${SSRUST_VERSION}.x86_64-unknown-linux-musl.tar.gz" | \
         tar zx -C /ssbin \
     && wget -O- "https://github.com/shadowsocks/v2ray-plugin/releases/download/${V2RAY_VERSION}/v2ray-plugin-linux-amd64-${V2RAY_VERSION}.tar.gz" | \
         tar zx -C /v2raybin \
