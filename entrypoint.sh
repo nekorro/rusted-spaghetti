@@ -30,9 +30,9 @@ case "$AppName" in
 		;;
 esac
 
-bash /conf/shadowsocks-libev_config.json >  /etc/shadowsocks-libev/config.json
-echo /etc/shadowsocks-libev/config.json
-cat /etc/shadowsocks-libev/config.json
+bash /conf/shadowsocks_config.json >  /etc/shadowsocks/config.json
+echo /etc/shadowsocks/config.json
+cat /etc/shadowsocks/config.json
 
 bash /conf/nginx_ss.conf > /etc/nginx/conf.d/ss.conf
 echo /etc/nginx/conf.d/ss.conf
@@ -49,6 +49,6 @@ else
   echo -n "${ss}" | qrencode -s 6 -o /wwwroot/${QR_Path}/vpn.png
 fi
 
-ss-server -c /etc/shadowsocks-libev/config.json &
+/ssbin/ssserver -c /etc/shadowsocks/config.json &
 rm -rf /etc/nginx/sites-enabled/default
 nginx -g 'daemon off;'
