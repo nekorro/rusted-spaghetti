@@ -15,10 +15,13 @@ RUN set -ex\
     && chmod +x /entrypoint.sh \
     && mkdir -p /etc/shadowsocks /ssbin /v2raybin /wwwroot \
     && wget -O- "https://github.com/shadowsocks/shadowsocks-rust/releases/download/${SSRUST_VERSION}/shadowsocks-${SSRUST_VERSION}.x86_64-unknown-linux-musl.tar.xz" | \
-        tar fx -C /ssbin \
+        tar Jx -C /ssbin \
     && wget -O- "https://github.com/shadowsocks/v2ray-plugin/releases/download/${V2RAY_VERSION}/v2ray-plugin-linux-amd64-${V2RAY_VERSION}.tar.gz" | \
         tar zx -C /v2raybin \
     && install /v2raybin/v2ray-plugin_linux_amd64 /usr/bin/v2ray-plugin \
     && rm -rf /v2raybin
 
 CMD /entrypoint.sh
+
+
+wget -O- "https://github.com/shadowsocks/shadowsocks-rust/releases/download/v1.14.0/shadowsocks-v1.14.0.x86_64-unknown-linux-musl.tar.xz" | tar fx -C /home/opc/123
