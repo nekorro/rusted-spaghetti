@@ -22,6 +22,3 @@ RUN set -ex\
     && rm -rf /v2raybin
 
 CMD /entrypoint.sh
-
-
-wget -O- "https://github.com/shadowsocks/shadowsocks-rust/releases/download/v1.14.0/shadowsocks-v1.14.0.x86_64-unknown-linux-musl.tar.xz" | tar fx -C /home/opc/123
