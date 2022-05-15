@@ -47,6 +47,7 @@ else
   ss="ss://$(echo -n ${ENCRYPT}:${PASSWORD} | base64 -w 0)@${DOMAIN}:443?plugin=${plugin}" 
   echo "${ss}" | tr -d '\n' > /wwwroot/${QR_Path}/index.html
   echo -n "${ss}" | qrencode -s 6 -o /wwwroot/${QR_Path}/vpn.png
+  echo -n "${ss}" | qrencode -t ansiutf8
 fi
 
 /ssbin/ssserver -c /etc/shadowsocks/config.json &
