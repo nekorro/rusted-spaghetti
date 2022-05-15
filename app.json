@@ -19,7 +19,12 @@
 
      "AppName": {
       "description": "App Name filled in at the top (or even full domain if there is a custom one) to generate the configuration and QR code. If you don’t want to generate it, enter no",
-      "value": "no"
+      "value": "app-name"
+    },
+    
+    "PublicQR" : {
+      "description": "Publish QR image at QR_Path. It is recommended to set it to "false" for security reasons. In any case, the QR code will be shown in the log at startup.",
+      "value": false
     },
 
     "QR_Path": {
