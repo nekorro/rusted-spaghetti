@@ -23,7 +23,7 @@
     },
     
     "PublicQR" : {
-      "description": "Publish QR image at QR_Path. It is recommended to set it to "false" for security reasons. In any case, the QR code will be shown in the log at startup.",
+      "description": "Publish QR image at QR_Path. It is recommended to set it to false for security reasons. In any case, the QR code will be shown in the log at startup.",
       "value": false
     },
 
