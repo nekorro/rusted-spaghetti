@@ -38,16 +38,16 @@ bash /conf/nginx_ss.conf > /etc/nginx/conf.d/ss.conf
 echo /etc/nginx/conf.d/ss.conf
 cat /etc/nginx/conf.d/ss.conf
 
+plugin=$(echo -n "v2ray;path=/${V2_Path};host=${DOMAIN};tls" | sed -e 's/\//%2F/g' -e 's/=/%3D/g' -e 's/;/%3B/g')
+ss="ss://$(echo -n ${ENCRYPT}:${PASSWORD} | base64 -w 0)@${DOMAIN}:443?plugin=${plugin}"
+echo -n "${ss}" | qrencode -t ansiutf8
 
-if [ "$AppName" = "no" ]; then
-  echo "Do not generate QR-code"
-else
+if [ "$PublicQR" = "true" ]; then
   [ ! -d /wwwroot/${QR_Path} ] && mkdir /wwwroot/${QR_Path}
-  plugin=$(echo -n "v2ray;path=/${V2_Path};host=${DOMAIN};tls" | sed -e 's/\//%2F/g' -e 's/=/%3D/g' -e 's/;/%3B/g')
-  ss="ss://$(echo -n ${ENCRYPT}:${PASSWORD} | base64 -w 0)@${DOMAIN}:443?plugin=${plugin}" 
   echo "${ss}" | tr -d '\n' > /wwwroot/${QR_Path}/index.html
   echo -n "${ss}" | qrencode -s 6 -o /wwwroot/${QR_Path}/vpn.png
-  echo -n "${ss}" | qrencode -t ansiutf8
+else
+  echo "Do not generate QR-code png"
 fi
 
 /ssbin/ssserver -c /etc/shadowsocks/config.json &
