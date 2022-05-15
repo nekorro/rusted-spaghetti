@@ -43,9 +43,11 @@ ss="ss://$(echo -n ${ENCRYPT}:${PASSWORD} | base64 -w 0)@${DOMAIN}:443?plugin=${
 echo -n "${ss}" | qrencode -t ansiutf8
 
 if [ "$PublicQR" = "true" ]; then
+  echo "Generating QR-code png"
   [ ! -d /wwwroot/${QR_Path} ] && mkdir /wwwroot/${QR_Path}
   echo "${ss}" | tr -d '\n' > /wwwroot/${QR_Path}/index.html
   echo -n "${ss}" | qrencode -s 6 -o /wwwroot/${QR_Path}/vpn.png
+  ls -lah /wwwroot/${QR_Path}/vpn.png
 else
   echo "Do not generate QR-code png"
 fi
