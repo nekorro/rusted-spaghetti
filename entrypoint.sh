@@ -40,6 +40,7 @@ cat /etc/nginx/conf.d/ss.conf
 
 plugin=$(echo -n "v2ray;path=/${V2_Path};host=${DOMAIN};tls" | sed -e 's/\//%2F/g' -e 's/=/%3D/g' -e 's/;/%3B/g')
 ss="ss://$(echo -n ${ENCRYPT}:${PASSWORD} | base64 -w 0)@${DOMAIN}:443?plugin=${plugin}"
+echo -n "${ss}"
 echo -n "${ss}" | qrencode -t ansiutf8
 
 if [ "$PublicQR" = "true" ]; then
